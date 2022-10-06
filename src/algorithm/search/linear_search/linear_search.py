@@ -6,7 +6,10 @@ from typing import List, TypeVar
 
 T = TypeVar("T")
 
+from calculate_time.calculate_time import calculate_time
 
+
+@calculate_time
 def linear_search(data_set: List[T], target_value: T) -> int | None:
     """linear search
 
@@ -24,9 +27,10 @@ def linear_search(data_set: List[T], target_value: T) -> int | None:
     return None
 
 
-data_set_1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-print(linear_search(data_set_1, 5))
-
-
-data_set_2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
-print(linear_search(data_set_2, "F"))
+# data_set_1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+# print(linear_search(data_set_1, 5))
+#
+#
+# data_set_2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+# print(linear_search(data_set_2, "F"))
+#

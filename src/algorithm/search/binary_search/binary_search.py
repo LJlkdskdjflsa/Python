@@ -1,10 +1,10 @@
 # pyright: strict
 """binary search question"""
-
-
+from calculate_time.calculate_time import calculate_time
 from typing import List
 
-
+# A decorator that preserves the signature.
+@calculate_time
 def binary_search(data_set: List[int], target_value: int) -> int | None:
     """binary_search
 
@@ -31,5 +31,5 @@ def binary_search(data_set: List[int], target_value: int) -> int | None:
     return None
 
 
-data_set_1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-print(binary_search(data_set_1, 5))
+# data_set_1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+# print(binary_search(data_set_1, 5))
