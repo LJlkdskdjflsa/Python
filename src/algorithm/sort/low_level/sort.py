@@ -114,7 +114,6 @@ def insert_sort_binary_search(data_set: List[int]) -> List[int]:
         #    data_set[j + 1] = data_set[j]
         #    j -= 1
         # data_set[j + 1] = tmp
-    print(data_set)
     return data_set
 
 
@@ -143,8 +142,6 @@ def binary_search_insert(data_set: List[int], j: int, target_value: int) -> List
     left = 0
     right = j - 1
     mid = (left + right) // 2
-    print(data_set)
-    print(left, right)
     while left <= right:  # there is item in the candidate area
         if data_set[mid] == target_value:
             data_set.pop(j)

@@ -13,6 +13,7 @@
 
 # 02 sort
 from random import randint
+from algorithm.sort.high_level.sort import quick_sort
 from algorithm.sort.low_level.sort import (
     bubble_sort,
     insert_sort_binary_search,
@@ -21,7 +22,7 @@ from algorithm.sort.low_level.sort import (
 )
 import copy
 
-data_set_origin = [randint(0, 10000) for i in range(10)]
+data_set_origin = [randint(0, 10000) for i in range(10000)]
 answer = copy.deepcopy(data_set_origin)
 answer.sort()
 print(
@@ -36,11 +37,13 @@ print(
     "select sort answer is correct:",
     answer == insert_sort(copy.deepcopy(data_set_origin)),
 )
-print(data_set_origin)
+print(
+    "select sort answer is correct:",
+    answer == quick_sort(copy.deepcopy(data_set_origin)),
+)
 # Not Finished yet the binary search still need to be tested
 # print(answer)
 # print(
 #    "select sort answer is correct:",
 #    answer == insert_sort_binary_search(copy.deepcopy(data_set_origin)),
 # )
-

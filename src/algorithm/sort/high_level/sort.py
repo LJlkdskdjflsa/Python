@@ -1,10 +1,28 @@
 # pyright: strict
+from calculate_time.calculate_time import calculate_time
 
 
-def quick_sort(
+@calculate_time
+def quick_sort(data_set: list[int]) -> list[int]:
+    """quick sort warpper
+
+    Args:
+        data_set (list[int]):the list to be sort
+
+    Returns:
+        list[int]: the sorted list of integers
+    """
+    return _quick_sort(data_set)
+
+
+def _quick_sort(
     data_set: list[int], left: int = 0, right: int | None = None
 ) -> list[int]:
     """sort list of integers by using recurrent partition
+
+    Time complexity:
+        Worst situation(reverse(need to loop n times->can use random to fix?)): O(n^2)
+        Normal:O(n*log(n))
 
     Args:
         data_set (list[int]): the list to be sort
@@ -18,14 +36,16 @@ def quick_sort(
         right = len(data_set) - 1
     if right > left:  # at least two elements
         mid = partition(data_set, left, right)
-        quick_sort(data_set, mid + 1, right)
-        quick_sort(data_set, left, mid - 1)
+        _quick_sort(data_set, mid + 1, right)
+        _quick_sort(data_set, left, mid - 1)
     return data_set
 
 
 def partition(data_set: list[int], left: int, right: int) -> int:
     """
     Returns a list that the items on the right side of the middle item is always smaller than the left side
+    Time complexity:
+        O(n)
 
     Args:
         data_set (List[int]): the data set to partition
@@ -38,7 +58,6 @@ def partition(data_set: list[int], left: int, right: int) -> int:
 
     tmp = data_set[left]  # the middle item
     while left < right:
-        print(data_set)
         while (
             left < right and data_set[right] >= tmp
         ):  # find item that is smaller than middle from right
