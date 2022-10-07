@@ -3,10 +3,9 @@
 
 
 from typing import List, TypeVar
+from calculate_time.calculate_time import calculate_time
 
 T = TypeVar("T")
-
-from calculate_time.calculate_time import calculate_time
 
 
 @calculate_time
