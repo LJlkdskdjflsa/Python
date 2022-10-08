@@ -13,7 +13,8 @@
 
 # 02 sort
 from random import randint
-from algorithm.sort.high_level.sort import quick_sort
+from algorithm.sort.high_level.heap_sort import heap_sort
+from algorithm.sort.high_level.quick_sort import quick_sort
 from algorithm.sort.low_level.sort import (
     bubble_sort,
     insert_sort_binary_search,
@@ -38,12 +39,10 @@ print(
     answer == insert_sort(copy.deepcopy(data_set_origin)),
 )
 print(
-    "select sort answer is correct:",
+    "quick sort answer is correct:",
     answer == quick_sort(copy.deepcopy(data_set_origin)),
 )
-# Not Finished yet the binary search still need to be tested
-# print(answer)
-# print(
-#    "select sort answer is correct:",
-#    answer == insert_sort_binary_search(copy.deepcopy(data_set_origin)),
-# )
+print(
+    "heap sort answer is correct:",
+    answer == heap_sort(copy.deepcopy(data_set_origin)),
+)

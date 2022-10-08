@@ -4,7 +4,8 @@ from random import randint
 from sys import path
 
 import pytest
-from algorithm.sort.high_level.sort import partition, quick_sort
+from algorithm.sort.high_level.quick_sort import partition, quick_sort
+from algorithm.sort.high_level.heap_sort import heap_sort, sift
 
 path.append("..")
 
@@ -45,3 +46,18 @@ def test_partition(get_data_and_answer: tuple[list[int], list[int]]):
             assert value <= middle_value
         elif index > middle_index:
             assert value >= middle_value
+
+
+# heap sort
+def test_sift():
+    """test sift works correctly"""
+
+    data_set = [1, 2, 3, 4, 5, 6]
+    sift(data_set, 0, len(data_set) - 1)
+    assert data_set == [3, 2, 6, 4, 5, 1]
+
+
+def test_heap_sort(get_data_and_answer: tuple[list[int], list[int]]):
+    data_set_origin, answer = get_data_and_answer
+    heap_sort(data_set_origin)
+    assert data_set_origin == answer
