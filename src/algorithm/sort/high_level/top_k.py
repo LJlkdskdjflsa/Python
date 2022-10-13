@@ -1,4 +1,6 @@
-from calculate_time.calculate_time import calculate_time
+"""to solve top k problem using heap sort"""
+import random
+
 
 def sift(data_set: list[int], low: int, high: int):
     """range the data to a proper heap (bigger up, smaller down)
@@ -19,10 +21,10 @@ def sift(data_set: list[int], low: int, high: int):
     tmp = data_set[low]  # store the data of the root node
     while j <= high:  # if the location of j is available
         if (
-            j + 1 <= high and data_set[j + 1] > data_set[j]
+            j + 1 <= high and data_set[j + 1] < data_set[j]
         ):  # if the right child node exist and is bigger than left
             j = j + 1  # j switch to the right child node
-        if data_set[j] > tmp:  # if the child node is bigger than the parent node
+        if data_set[j] < tmp:  # if the child node is bigger than the parent node
             data_set[i] = data_set[j]
             i = j  # to the below layer
             j = 2 * i + 1
@@ -33,30 +35,35 @@ def sift(data_set: list[int], low: int, high: int):
         data_set[i] = tmp  # put tmp value in a leave
 
 
-@calculate_time
-def heap_sort(data_set: list[int]) -> list[int]:
-    """sort int list (using heap)
-
-    Time complexity:
-        Worst situation: -
-        Normal: O(n*log(n))
+def top_k(data_set: list[int], k: int) -> list[int]:
+    """get the top k high number
 
     Args:
-        data_set (list[int]): the sorted list of integers
+        data_set (list[int]): data set to get number
+        k (int): the number need to output
 
     Returns:
-        list[int]: the sorted list of integers
+        list[int]: output value
     """
-    # first : find the last non leave node
-    n = len(data_set)
-    # ((n-2)//2) -> the last child's parent
-    for i in range((n - 2) // 2, -1, -1):
-        sift(data_set, i, n - 1)
-    # finish building heap
+    # 1. build heap
+    heap = data_set[0:k]
+    for i in range((k - 2) // 2, -1, -1):
+        sift(heap, i, k - 1)
 
-    # take elements out one by one
-    for i in range(n - 1, -1, -1):
+    # 2. loop through
+    for i in range(k, len(data_set) - 1):
+        if data_set[i] > heap[0]:
+            heap[0] = data_set[i]
+            sift(heap, 0, k - 1)
+
+    # 3. output
+    for i in range(k - 1, -1, -1):
         # i point to the last element in the current heap
-        data_set[0], data_set[i] = data_set[i], data_set[0]  # change the root to bottom
-        sift(data_set, 0, i - 1)  # i-1 is the new high
-    return data_set
+        heap[0], heap[i] = heap[i], heap[0]  # change the root to bottom
+        sift(heap, 0, i - 1)  # i-1 is the new high
+    return heap
+
+
+datas = list(range(1000))
+random.shuffle(datas)
+print(top_k(datas, 10))
