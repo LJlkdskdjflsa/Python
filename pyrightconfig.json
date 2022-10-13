@@ -1,5 +1,6 @@
 {
   "include": ["src"],
+  "strict": ["src/"],
 
   "exclude": [
     "**/node_modules",
