@@ -7,6 +7,8 @@ authors = ["LJlkdskdjflsa <liliangjya@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 black = "^22.8.0"
+uvloop = "^0.17.0"
+bpython = "^0.23"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.15.3"
